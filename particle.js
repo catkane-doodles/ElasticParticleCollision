@@ -77,7 +77,14 @@ class Particle {
   move() {
     this.pos.add(this.vel);
     this.z += 0.01;
-    this.pos.x = mod(this.pos.x, windowWidth);
-    this.pos.y = mod(this.pos.y, windowHeight);
+
+    this.vel.x =
+      this.pos.x + this.radius > width || this.pos.x - this.radius < 0
+        ? -this.vel.x
+        : this.vel.x;
+    this.vel.y =
+      this.pos.y + this.radius > height || this.pos.y - this.radius < 0
+        ? -this.vel.y
+        : this.vel.y;
   }
 }
